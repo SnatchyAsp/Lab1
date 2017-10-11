@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 0987654345678909876543
+=======
+ertyuiyytrewewrtyuiytrewrtyui
+>>>>>>> 1152010110
