@@ -1,7 +1,7 @@
-package project;
-
+﻿package project;
+//what will change?
 import java.awt.*;
-// �������
+
 import javax.print.attribute.standard.PrinterLocation;
 import javax.swing.*;
 import java.awt.event.*;
@@ -18,7 +18,7 @@ import project.choosefile;
 
 public class GUIlauncher extends JFrame {
 	/*
-	JLabel bq1;//����
+	JLabel bq1;
 	JButton an1,an2,an3;  JPanel mb1;//�ϲ�
 	JTabbedPane xxk;//�в�
 	JPanel mb2,mb3,mb4;
