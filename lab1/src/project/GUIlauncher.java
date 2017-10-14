@@ -1,5 +1,4 @@
 ﻿package project;
-//what will change?
 import java.awt.*;
 
 import javax.print.attribute.standard.PrinterLocation;

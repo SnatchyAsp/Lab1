@@ -1,5 +1,4 @@
 package project;
-//it is a test
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
