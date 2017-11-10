@@ -12,7 +12,7 @@ import java.io.InputStreamReader;
 public class GraphViz
 {
 	private static String TEMP_DIR = "D:\\dot";
-	private static String DOT = "D:\\dot\\bin\\dot.exe";
+	private static String DOT = "C:\\Users\\junruitian\\Desktop\\lab\\release\\bin\\dot.exe";
 	private int[] dpiSizes =
 	{ 46, 51, 57, 63, 70, 78, 86, 96, 106, 116, 128, 141, 155, 170, 187, 206, 226, 249 };
 	private int currentDpiPos = 7;
