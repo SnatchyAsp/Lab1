@@ -63,7 +63,7 @@ public class test {
     String result7 = abc.queryBridgeWords( edges1, word8, word9);  //两个word都不在
     assertEquals("The bridge words from i to k are: b, p, j, and h.",result7);
     String result8 = abc.queryBridgeWords( edges2, word3, word4); //
-    assertEquals("No “e” and “m” in the graph!",result8);
+    assertEquals("No “e” and “” in the graph!",result8);
   }
 
 }

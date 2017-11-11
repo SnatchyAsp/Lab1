@@ -165,7 +165,35 @@ public class project1
 		File out = new File(fileName + "." + type);
 		gv.writeGraphToFile(gv.getGraph(gv.getDotSource(), type), out);
 	}
-
+	public static String getqueryBridgeWords(List<edge> edges, String word1, String word2)
+	{
+	  String result="";
+	  int a = 0;
+    int b = 0;
+    String answer = new String();
+    List<String> bridge_word = new ArrayList();
+    for (int i = 0; i < edges.size(); i++)
+    {
+      if (edges.get(i).start_node.equals(word1))
+      {
+        a = 1;
+        String new_start = edges.get(i).end_node;
+        for (int j = 0; j < edges.size(); j++)
+        {
+          if (edges.get(j).end_node.equals(word2) && edges.get(j).start_node.equals(new_start))
+          {
+            b = 1;
+            bridge_word.add(new_start);
+          }
+        }
+      }
+    }
+    for(int i=0;i<bridge_word.size();i++)
+    {
+      result+=bridge_word.get(i)+" ";
+    }
+	  return result;
+	}
 	public static String queryBridgeWords(List<edge> edges, String word1, String word2)
 	{
 		int a = 0;
@@ -242,67 +270,25 @@ public class project1
 		}
 		return answer;
 	}
-
+	public static int rannum(int a)
+	{
+	  if(a==0) return 0;
+	  Random random = new Random();
+    int rand_int = random.nextInt(a);
+    return rand_int;
+	    
+	}
 	public static String generateNewText(List<edge> edges, String inputText)
 	{
-
-		String[] new_words = new String[1000];
-		new_words = inputText.split(" ");
-		int n = 0;
-		int add = 0;
-		int cnt = 1;
-		String new_string = new String();
-		for (int i = 0; i < new_words.length; i++)
-		{
-			if (null != new_words[i])
-				n++;
-		}
-		while (cnt != n)
-		{
-
-			List<String> bridge_word = new ArrayList();
-			for (int i = 0; i < edges.size(); i++)
-			{
-
-				if (edges.get(i).start_node.equals(new_words[cnt - 1]))
-				{
-
-					String new_start = edges.get(i).end_node;
-
-					for (int j = 0; j < edges.size(); j++)
-					{
-						if (edges.get(j).end_node.equals(new_words[cnt]) && edges.get(j).start_node.equals(new_start))
-						{
-
-							bridge_word.add(new_start);
-						}
-					}
-				}
-			}
-			new_string += new_words[cnt - 1];
-			new_string += " ";
-			if (bridge_word.size() == 1)
-			{
-				new_string += bridge_word.get(0);
-				new_string += " ";
-			} else if (bridge_word.size() > 1)
-			{
-
-				Random random = new Random();
-				int rand_int = random.nextInt(bridge_word.size());
-				new_string += bridge_word.get(rand_int);
-				new_string += " ";
-			}
-			if (cnt == n - 1)
-			{
-				new_string += new_words[cnt];
-
-			}
-
-			cnt++;
-
-		}
-		return new_string;
+	  String[] words = inputText.split(" ");
+    String result = words[0];
+    String[] bridge;
+    for (int i = 0; i < words.length - 1; i++) {
+      bridge = getqueryBridgeWords(edges, words[i], words[i + 1]).split(" ");
+      result = result + " " + bridge[rannum(bridge.length)]+ " " + words[i + 1];  
+    }
+    result=result.replaceAll(" +"," ");
+    return result;
 	}
 
 	public static List<String> calcShortestPath(List<edge> edges, String word1, String word2)
