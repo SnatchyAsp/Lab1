@@ -56,14 +56,16 @@ public class test {
     assertEquals("No bridge words from m to b!",result3);
     String result4 = abc.queryBridgeWords( edges1, word2, word5);  //2
     assertEquals("The bridge words from b to r are: k, and s.",result4);
-    String result5 = abc.queryBridgeWords( edges1, word2, word6);  //word²»ÔÚÍ¼Àï
-    assertEquals("No ¡°z¡± in the graph!",result5);
-    String result6 = abc.queryBridgeWords( edges1, word6, word7);  //Á½¸öword¶¼²»ÔÚ
-    assertEquals("No ¡°z¡± and ¡°g¡± in the graph!",result6);
-    String result7 = abc.queryBridgeWords( edges1, word8, word9);  //Á½¸öword¶¼²»ÔÚ
+    String result5 = abc.queryBridgeWords( edges1, word2, word6);  //word
+    assertEquals("No â€œzâ€ in the graph!",result5);
+    String result6 = abc.queryBridgeWords( edges1, word6, word7);  //
+    assertEquals("No â€œzâ€ and â€œgâ€ in the graph!",result6);
+    String result7 = abc.queryBridgeWords( edges1, word8, word9);  //
     assertEquals("The bridge words from i to k are: b, p, j, and h.",result7);
     String result8 = abc.queryBridgeWords( edges2, word3, word4); //
-    assertEquals("No ¡°e¡± and ¡°m¡± in the graph!",result8);
+    assertEquals("No â€œeâ€ and â€œmâ€ in the graph!",result8);
+    String result9 = abc.queryBridgeWords( edges1, word6, word2);  //word
+    assertEquals("No â€œzâ€ in the graph!",result9);
   }
 
 }
