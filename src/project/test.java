@@ -65,6 +65,7 @@ public class test {
     assertEquals("No \"e\" and \"m\" in the graph!",result8);
     String result9 = abc.queryBridgeWords( edges1, word6, word2);  //word
     assertEquals("No \"z\" in the graph!",result9);
+
   }
 
 }

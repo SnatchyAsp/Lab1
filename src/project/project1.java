@@ -161,7 +161,6 @@ public class project1
 		File out = new File(fileName + "." + type);
 		gv.writeGraphToFile(gv.getGraph(gv.getDotSource(), type), out);
 	}
-
 	public static String queryBridgeWords(List<edge> edges, String word1, String word2)
 	{
 		int a = 0;
@@ -238,7 +237,14 @@ public class project1
 		}
 		return answer;
 	}
-
+	public static int rannum(int a)
+	{
+	  if(a==0) return 0;
+	  Random random = new Random();
+    int rand_int = random.nextInt(a);
+    return rand_int;
+	    
+	}
 	public static String generateNewText(List<edge> edges, String inputText)
 	{
 
@@ -289,6 +295,7 @@ public class project1
 				new_string += bridge_word.get(rand_int);
 				new_string += " ";
 			}
+			
 			if (cnt == n - 1)
 			{
 				new_string += new_words[cnt];
@@ -298,6 +305,7 @@ public class project1
 			cnt++;
 
 		}
+		if(n==1) return inputText;
 		return new_string;
 	}
 
