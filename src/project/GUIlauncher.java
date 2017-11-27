@@ -37,8 +37,8 @@ public class GUIlauncher extends JFrame
 	private String new_filename;
 	private String Strgraph = "";
 	private String new_filename2;
-	List<project1.edge> edges = new ArrayList();
-	List<project1.edge> edges1 = new ArrayList();
+	List<edge> edges = new ArrayList();
+	List<edge> edges1 = new ArrayList();
 	String[] reswords = new String[100];
 	int temp1;
 	private JPanel p, p1, p2, p3, p4, p5, p6, p7, p_login, contentPanel;
@@ -349,8 +349,8 @@ public class GUIlauncher extends JFrame
 			this.setBounds(400, 400, 1200, 600);
 			for (int i = 0; i < edges.size(); i++)
 			{
-				TXT.append("From:" + edges.get(i).start_node + "  To:" + edges.get(i).end_node + "  Weight:"
-						+ edges.get(i).weight + "\n");
+				TXT.append("From:" + edges.get(i).getstart_node() + "  To:" + edges.get(i).getend_node() + "  Weight:"
+						+ edges.get(i).getweight() + "\n");
 
 			}
 			this.addWindowListener(new WindowAdapter()
@@ -511,12 +511,12 @@ public class GUIlauncher extends JFrame
 				for (int temp = 0; temp < edges.size(); temp++)
 				{
 
-					if (check.contains(edges.get(temp).start_node))
+					if (check.contains(edges.get(temp).getstart_node()))
 						continue;
-					check.add(edges.get(temp).start_node);
+					check.add(edges.get(temp).getstart_node());
 					Shortestway.append(
-							"The shortest way(s) from " + word1 + " to " + edges.get(temp).start_node + " is(are):");
-					List<String> b = project1.calcShortestPath(edges, word1, edges.get(temp).start_node);
+							"The shortest way(s) from " + word1 + " to " + edges.get(temp).getstart_node() + " is(are):");
+					List<String> b = project1.calcShortestPath(edges, word1, edges.get(temp).getstart_node());
 					Shortestway.setLineWrap(true);
 					Shortestway.setWrapStyleWord(true);
 					for (int j = 0; j < b.size(); j++)
@@ -600,10 +600,10 @@ public class GUIlauncher extends JFrame
 				gv.addln(gv.start_graph());
 				for (int i = 0; i < edges.size(); i++)
 				{
-					gv.addln(edges.get(i).start_node + " -> " + edges.get(i).end_node + "[label = \""
-							+ edges.get(i).weight + "\"];");
-					System.out.println(edges.get(i).start_node + " -> " + edges.get(i).end_node + "[label = \""
-							+ edges.get(i).weight + "\"];");
+					gv.addln(edges.get(i).getstart_node() + " -> " + edges.get(i).getend_node() + "[label = \""
+							+ edges.get(i).getweight() + "\"];");
+					System.out.println(edges.get(i).getstart_node() + " -> " + edges.get(i).getend_node() + "[label = \""
+							+ edges.get(i).getweight() + "\"];");
 				}
 				gv.addln(gv.end_graph());
 				String type = "jpg";

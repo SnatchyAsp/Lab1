@@ -8,7 +8,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import project.project1.edge;
 
 public class test {
   
@@ -57,15 +56,15 @@ public class test {
     String result4 = abc.queryBridgeWords( edges1, word2, word5);  //2
     assertEquals("The bridge words from b to r are: k, and s.",result4);
     String result5 = abc.queryBridgeWords( edges1, word2, word6);  //word
-    assertEquals("No “z” in the graph!",result5);
+    assertEquals("No \"z\" in the graph!",result5);
     String result6 = abc.queryBridgeWords( edges1, word6, word7);  //
-    assertEquals("No “z” and “g” in the graph!",result6);
+    assertEquals("No \"z\" and \"g\" in the graph!",result6);
     String result7 = abc.queryBridgeWords( edges1, word8, word9);  //
     assertEquals("The bridge words from i to k are: b, p, j, and h.",result7);
     String result8 = abc.queryBridgeWords( edges2, word3, word4); //
-    assertEquals("No “e” and “m” in the graph!",result8);
+    assertEquals("No \"e\" and \"m\" in the graph!",result8);
     String result9 = abc.queryBridgeWords( edges1, word6, word2);  //word
-    assertEquals("No “z” in the graph!",result9);
+    assertEquals("No \"z\" in the graph!",result9);
   }
 
 }

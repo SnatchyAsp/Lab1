@@ -72,13 +72,7 @@ public class project1
 		return str;
 	}
 
-	public static class edge
-	{
-		String start_node;
-		String end_node;
-		int weight;
-
-	}
+	
 
 	public static List<edge> createDirectedGraph(String Str)
 	{
@@ -100,9 +94,11 @@ public class project1
 			String new_end = words[cnt];
 			for (i = 0; i < edges.size(); i++)
 			{
-				if (edges.get(i).start_node.equals(new_start) && edges.get(i).end_node.equals(new_end))
+				if (edges.get(i).getstart_node().equals(new_start) && edges.get(i).getend_node().equals(new_end))
 				{
-					edges.get(i).weight++;
+				
+					int tempp=edges.get(i).getweight();
+					edges.get(i).setweight(tempp+1);
 					break;
 				}
 
@@ -110,9 +106,9 @@ public class project1
 			if (i == edges.size())
 			{
 				edge new_edge = new edge();
-				new_edge.start_node = new_start;
-				new_edge.end_node = new_end;
-				new_edge.weight = 1;
+				new_edge.setstart_node(new_start);
+				new_edge.setend_node(new_end) ;
+				new_edge.setweight(1);
 				edges.add(new_edge);
 			}
 
@@ -121,7 +117,7 @@ public class project1
 		for (int i = 0; i < edges.size(); i++)
 		{
 
-			graph += (edges.get(i).start_node + " -> " + edges.get(i).end_node + "[label = \"" + edges.get(i).weight
+			graph += (edges.get(i).getstart_node() + " -> " + edges.get(i).getend_node() + "[label = \"" + edges.get(i).getweight()
 					+ "\"];");
 		}
 
@@ -133,8 +129,8 @@ public class project1
 	{
 		for (int i = 0; i < edges.size(); i++)
 		{
-			System.out.print("From:" + edges.get(i).start_node + "  To:" + edges.get(i).end_node + "  Weight:"
-					+ edges.get(i).weight);
+			System.out.print("From:" + edges.get(i).getstart_node() + "  To:" + edges.get(i).getend_node() + "  Weight:"
+					+ edges.get(i).getweight());
 			System.out.println();
 		}
 	}
@@ -174,13 +170,13 @@ public class project1
 		List<String> bridge_word = new ArrayList();
 		for (int i = 0; i < edges.size(); i++)
 		{
-			if (edges.get(i).start_node.equals(word1))
+			if (edges.get(i).getstart_node().equals(word1))
 			{
 				a = 1;
-				String new_start = edges.get(i).end_node;
+				String new_start = edges.get(i).getend_node();
 				for (int j = 0; j < edges.size(); j++)
 				{
-					if (edges.get(j).end_node.equals(word2) && edges.get(j).start_node.equals(new_start))
+					if (edges.get(j).getend_node().equals(word2) && edges.get(j).getstart_node().equals(new_start))
 					{
 						b = 1;
 						bridge_word.add(new_start);
@@ -192,7 +188,7 @@ public class project1
 		{
 			for (int i = 0; i < edges.size(); i++)
 			{
-				if (edges.get(i).end_node.equals(word1))
+				if (edges.get(i).getend_node().equals(word1))
 					a = 1;
 			}
 		}
@@ -200,21 +196,21 @@ public class project1
 		{
 			for (int i = 0; i < edges.size(); i++)
 			{
-				if (edges.get(i).end_node.equals(word2) || edges.get(i).start_node.equals(word2))
+				if (edges.get(i).getend_node().equals(word2) || edges.get(i).getstart_node().equals(word2))
 					b = 1;
 			}
 		}
 		if (a == 0 && b == 0)
 		{
-			answer += ("No " + "¡°" + word1 + "¡±" + " and ¡°" + word2 + "¡±" + " in the graph!");
+			answer += ("No " + "\"" + word1 + "\"" + " and \"" + word2 + "\"" + " in the graph!");
 		} else if (a == 1 && b == 0)
 		{
 
-			answer += ("No " + "¡°" + word2 + "¡±" + " in the graph!");
+			answer += ("No " + "\"" + word2 + "\"" + " in the graph!");
 		} else if (a == 0 && b == 1)
 		{
 
-			answer += ("No " + "¡°" + word1 + "¡±" + " in the graph!");
+			answer += ("No " + "\"" + word1 + "\"" + " in the graph!");
 		} else if (bridge_word.size() > 1)
 		{
 
@@ -264,14 +260,14 @@ public class project1
 			for (int i = 0; i < edges.size(); i++)
 			{
 
-				if (edges.get(i).start_node.equals(new_words[cnt - 1]))
+				if (edges.get(i).getstart_node().equals(new_words[cnt - 1]))
 				{
 
-					String new_start = edges.get(i).end_node;
+					String new_start = edges.get(i).getend_node();
 
 					for (int j = 0; j < edges.size(); j++)
 					{
-						if (edges.get(j).end_node.equals(new_words[cnt]) && edges.get(j).start_node.equals(new_start))
+						if (edges.get(j).getend_node().equals(new_words[cnt]) && edges.get(j).getstart_node().equals(new_start))
 						{
 
 							bridge_word.add(new_start);
@@ -322,9 +318,9 @@ public class project1
 			{
 				List<String> new_path = new ArrayList();
 
-				if (edges.get(i).start_node.equals(new_start))
+				if (edges.get(i).getstart_node().equals(new_start))
 				{
-					new_end = edges.get(i).end_node;
+					new_end = edges.get(i).getend_node();
 					for (int j = 0; j < paths.peek().size(); j++)
 					{
 						new_path.add(paths.peek().get(j));
@@ -377,7 +373,7 @@ public class project1
 		Random random = new Random();
 		int rand_int = random.nextInt(edges.size());
 
-		String word1 = edges.get(rand_int).start_node;
+		String word1 = edges.get(rand_int).getstart_node();
 		List<String> sol = new ArrayList();
 		String ans = "";
 		while (1 == 1)
@@ -385,9 +381,9 @@ public class project1
 			List<String> path = new ArrayList();
 			for (int i = 0; i < edges.size(); i++)
 			{
-				if (edges.get(i).start_node.equals(word1))
+				if (edges.get(i).getstart_node().equals(word1))
 				{
-					path.add(edges.get(i).end_node);
+					path.add(edges.get(i).getend_node());
 
 				}
 			}
